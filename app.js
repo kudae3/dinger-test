@@ -3,6 +3,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import { fileURLToPath } from 'url';
+import paymentRoute from './routes/payment.route.js'
 
 const app = express();
 
@@ -15,6 +16,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 const PORT = 3000;
+
+app.use("/api/payment", paymentRoute);
 
 app.get('/', (req, res) => {
   res.send('Server is running on port 3000 ✅');
