@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://staging.dinger.asia";
+const BASE_URL = process.env.DINGER_STATING_BASE_URL || "https://staging.dinger.asia/payment-gateway-uat";
 
 const projectName = "sannkyi staging";
 const apiKey = "m7v9vlk.eaOE1x3k9FnSH-Wm6QtdM1xxcEs";
@@ -14,7 +14,7 @@ export const getPaymentToken = async () => {
             merchantName
         }
     });
-
+    console.log('Token Response', response);
     return response.data.token.paymentToken;
 
 };
