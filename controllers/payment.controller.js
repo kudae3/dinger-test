@@ -1,6 +1,8 @@
 import NodeRSA from 'node-rsa';
 import axios from 'axios';
 import { getPaymentToken } from '../services/dinger.service.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const createPayment = async (req, res) => {
     
@@ -28,7 +30,7 @@ export const createPayment = async (req, res) => {
 
         // Call PAY API
         const response = await axios.post(
-            `${process.env.DINGER_BASE_URL}/api/pay`,
+            `${process.env.DINGER_BASE_URL}api/pay`,
             { payload: encryptedStr },
             {
                 headers: { 
