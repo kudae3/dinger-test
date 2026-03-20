@@ -5,11 +5,8 @@ import { getPaymentToken } from '../services/dinger.service.js';
 export const createPayment = async (req, res) => {
     
     const pubKey = `-----BEGIN PUBLIC KEY-----
-    MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJtu2coOqkFaaxLtlnb6DAQRvw
-    +6l9iwm6RZlGrAf6IUnZiJavYi60hTveLkFbeYLvvLcFyIGddQDUJBCvEOIk7Gwg
-    F6pPRlV9k5g7CDyHbqsjudOix+ElD2XkAiUeYWAK++uRVBqcE/xxwNMDoRwyYqoC
-    /OifZf0pH7PA3XCUyQIDAQAB
-    -----END PUBLIC KEY-----`;
+        MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDgupjRRaxErhsnFD/6tWrgONUq7H9Td+gcBZ0rfg75v5pStPNxBYx7/C6pDKzRPGSo/1R+1eQnLdsxbGOykhUCpgoDLzCOtqjGSsx0xLAXa4ZNpij+wJ3yUlGWgNDnPcHy2mr2Q9vRbM/rTlemLuNRnPNYZeg9TH3yPB2Xv91B4QIDAQAB
+        -----END PUBLIC KEY-----`;
 
     try {
         // GET TOKEN
