@@ -4,6 +4,8 @@ import { getPaymentToken } from '../services/dinger.service.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
+const BASE_URL = (process.env.DINGER_BASE_URL || '').replace(/\/+$/, '');
+
 export const createPayment = async (req, res) => {
     
     const pubKey = `-----BEGIN PUBLIC KEY-----
@@ -28,19 +30,28 @@ export const createPayment = async (req, res) => {
         const encryptedStr = key.encrypt(JSON.stringify(data), 'base64');
         console.log("Encrypted payload:", encryptedStr);
 
-        // Call PAY API
+        const formBody = new URLSearchParams({ payload: encryptedStr });
+
+        // Call PAY API (Dinger expects x-www-form-urlencoded payload)
         const response = await axios.post(
-            `${process.env.DINGER_BASE_URL}api/pay`,
-            { payload: encryptedStr },
+            `${BASE_URL}/api/pay`,
+            formBody.toString(),
             {
                 headers: { 
                     Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }
         );
 
         console.log("Pay API response:", response.data);
+
+        if (response.data?.code !== '000') {
+            return res.status(400).json({
+                message: 'Payment gateway returned an error',
+                payResponse: response.data
+            });
+        }
 
         res.json({
             message: "Payment created",
