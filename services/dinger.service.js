@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.DINGER_STATING_BASE_URL || "https://staging.dinger.asia/payment-gateway-uat";
+const BASE_URL = process.env.DINGER_BASE_URL || "https://api.dinger.asia/";
 
 const projectName = "sannkyi staging";
 const apiKey = "m7v9vlk.eaOE1x3k9FnSH-Wm6QtdM1xxcEs";

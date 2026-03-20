@@ -31,7 +31,7 @@ export const createPayment = async (req, res) => {
 
         // Call PAY API
         const response = await axios.post(
-            `${process.env.DINGER_STATING_BASE_URL}/api/pay`,
+            `${process.env.DINGER_BASE_URL}/api/pay`,
             { payload: encryptedStr },
             {
                 headers: { 
